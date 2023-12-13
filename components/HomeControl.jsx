@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const HomeControl = () => {
-  return (
-    <div style={{margin:"80px"}}></div>
-  )
-}
+  return <div style={{ margin: "80px" }}></div>;
+};
 
-export default HomeControl
+export default HomeControl;

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const SocialApp = () => {
-  return (
-    <div>SocialApp</div>
-  )
-}
+  return <div>SocialApp</div>;
+};
 
-export default SocialApp
+export default SocialApp;

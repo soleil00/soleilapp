@@ -44,52 +44,76 @@ const ProductCategories = () => {
           indicatorColor="secondary"
           allowScrollButtonsMobile
           textColor="secondary"
-          style={{ fontSize: 'small' }} 
+          style={{ fontSize: "small" }}
         >
-          <Tab value="1" label="All" style={{ minWidth: 'initial' }} />
-          <Tab value="2" label="Electronic" style={{ minWidth: 'initial' }}/>
-          <Tab value="12" label="Furnitures" style={{ minWidth: 'initial' }} />
-          <Tab value="11" label="Real Estates" style={{ minWidth: 'initial' }} />
-          <Tab value="3" label="Clothing" style={{ minWidth: 'initial' }} />
-          <Tab value="4" label="Kitchen appliances" style={{ minWidth: 'initial' }} />
-          <Tab value="5" label="Health & Beauty" style={{ minWidth: 'initial' }} />
-          <Tab value="6" label="Sports" style={{ minWidth: 'initial' }} />
-          <Tab value="7" label="Toys & Games" style={{ minWidth: 'initial' }} />
-          <Tab value="8" label="Jewelry" style={{ minWidth: 'initial' }} />
-          <Tab value="9" label="Groceries & food" style={{ minWidth: 'initial' }} />
-          <Tab value="10" label="Construction" style={{ minWidth: 'initial' }} />
+          <Tab value="1" label="All" style={{ minWidth: "initial" }} />
+          <Tab value="2" label="Electronic" style={{ minWidth: "initial" }} />
+          <Tab value="12" label="Furnitures" style={{ minWidth: "initial" }} />
+          <Tab
+            value="11"
+            label="Real Estates"
+            style={{ minWidth: "initial" }}
+          />
+          <Tab value="3" label="Clothing" style={{ minWidth: "initial" }} />
+          <Tab
+            value="4"
+            label="Kitchen appliances"
+            style={{ minWidth: "initial" }}
+          />
+          <Tab
+            value="5"
+            label="Health & Beauty"
+            style={{ minWidth: "initial" }}
+          />
+          <Tab value="6" label="Sports" style={{ minWidth: "initial" }} />
+          <Tab value="7" label="Toys & Games" style={{ minWidth: "initial" }} />
+          <Tab value="8" label="Jewelry" style={{ minWidth: "initial" }} />
+          <Tab
+            value="9"
+            label="Groceries & food"
+            style={{ minWidth: "initial" }}
+          />
+          <Tab
+            value="10"
+            label="Construction"
+            style={{ minWidth: "initial" }}
+          />
         </Tabs>
         <TabPanel value="1">
           <ProductList />
         </TabPanel>
-        <TabPanel value="2"><Electronics/></TabPanel>
-        <TabPanel value="3"><Clothing/></TabPanel>
+        <TabPanel value="2">
+          <Electronics />
+        </TabPanel>
+        <TabPanel value="3">
+          <Clothing />
+        </TabPanel>
         <TabPanel value="4">
-          <HomeAppliances/>
+          <HomeAppliances />
         </TabPanel>
         <TabPanel value="5">
-          <HealthAndBeauty/>
+          <HealthAndBeauty />
         </TabPanel>
         <TabPanel value="6">
-          <Sports/>
+          <Sports />
         </TabPanel>
         <TabPanel value="7">
-          <ToysAndGames/>
+          <ToysAndGames />
         </TabPanel>
         <TabPanel value="8">
-          <Jewelry/>
+          <Jewelry />
         </TabPanel>
         <TabPanel value="9">
-         <GroceriesAndFood/>
+          <GroceriesAndFood />
         </TabPanel>
         <TabPanel value="10">
-          <ConstructionMaterials/>
+          <ConstructionMaterials />
         </TabPanel>
         <TabPanel value="11">
           <CatchingPokemon />
         </TabPanel>
         <TabPanel value="12">
-          <Furnitures/>
+          <Furnitures />
         </TabPanel>
       </Box>
     </TabContext>

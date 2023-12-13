@@ -6,8 +6,7 @@ import { Search, ShoppingCart } from "@mui/icons-material";
 import { soleilContext } from "../cartContext";
 
 const MarketHeader = () => {
-
-  const {cart}=useContext(soleilContext)
+  const { cart } = useContext(soleilContext);
 
   return (
     <div>
@@ -31,7 +30,7 @@ const MarketHeader = () => {
           }}
         />
         <Badge badgeContent={cart.length} color="success">
-          <ShoppingCart/>
+          <ShoppingCart />
         </Badge>
       </Stack>
     </div>

@@ -8,19 +8,14 @@ import ProductCategories from "./components/ProductCategories";
 import MarketBottom from "./components/MarketBottom";
 // import CartContextProvider from "./cartContext";
 
-
 const MarkertPlace = () => {
   return (
-    
-
     <div className="relative">
       <div className="m-4">
         <MarketHeader />
       </div>
       <ProductCategories />
     </div>
-
-    
   );
 };
 
