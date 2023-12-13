@@ -76,7 +76,12 @@ const ProfilePage = () => {
             Country
           </AccordionSummary>
           <AccordionDetails>
-            <TextField select label="select country" fullWidth>
+            <TextField
+              select
+              label="select country"
+              fullWidth
+              value={"testing"}
+            >
               <MenuItem>rw</MenuItem>
               <MenuItem>er</MenuItem>
               <MenuItem>rs</MenuItem>
