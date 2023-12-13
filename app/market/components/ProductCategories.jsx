@@ -5,14 +5,26 @@ import {
   CarCrash,
   CatchingPokemon,
   Construction,
+  ElectricBike,
   HdrEnhancedSelect,
   House,
+  Shop,
   ShowerSharp,
 } from "@mui/icons-material";
 import { TabContext, TabPanel } from "@mui/lab";
 import { Box, Tab, Tabs } from "@mui/material";
 import React, { useState } from "react";
 import ProductList from "./ProductList";
+import Furnitures from "./categories/Furnitures";
+import Electronics from "./categories/Electronics";
+import Clothing from "./categories/Clothing";
+import ToysAndGames from "./categories/ToysAndGames";
+import Sports from "./categories/Sports";
+import Jewelry from "./categories/Jewelry";
+import HealthAndBeauty from "./categories/HealthAndBeauty";
+import HomeAppliances from "./categories/HomeAppliances";
+import ConstructionMaterials from "./categories/ConstructionMaterials";
+import GroceriesAndFood from "./categories/GroceriesAndFood";
 
 const ProductCategories = () => {
   const [tabValue, setTabValue] = useState("1");
@@ -23,7 +35,7 @@ const ProductCategories = () => {
 
   return (
     <TabContext value={tabValue}>
-      <Box sx={{ borderColor: "divider", width: "100%", bottomBorder: 1 }}>
+      <Box sx={{ borderColor: "divider", width: "100%", borderBottom: 1 }}>
         <Tabs
           value={tabValue}
           onChange={handleChange}
@@ -32,53 +44,52 @@ const ProductCategories = () => {
           indicatorColor="secondary"
           allowScrollButtonsMobile
           textColor="secondary"
+          style={{ fontSize: 'small' }} 
         >
-          <Tab value="1" label="All" />
-          <Tab value="2" label="Electronic" />
-          <Tab value="12" label="Vehicles" />
-          <Tab value="11" label="Real Estates" />
-          <Tab value="3" label="Clothing" />
-          <Tab value="4" label="Kitchen appliances" />
-          <Tab value="5" label="Health & Beauty" />
-          <Tab value="6" label="Sports" />
-          <Tab value="7" label="Toys & Games" />
-          <Tab value="8" label="Jewelry" />
-          <Tab value="9" label="Groceries & food" />
-          <Tab value="10" label="Construction" />
+          <Tab value="1" label="All" style={{ minWidth: 'initial' }} />
+          <Tab value="2" label="Electronic" style={{ minWidth: 'initial' }}/>
+          <Tab value="12" label="Furnitures" style={{ minWidth: 'initial' }} />
+          <Tab value="11" label="Real Estates" style={{ minWidth: 'initial' }} />
+          <Tab value="3" label="Clothing" style={{ minWidth: 'initial' }} />
+          <Tab value="4" label="Kitchen appliances" style={{ minWidth: 'initial' }} />
+          <Tab value="5" label="Health & Beauty" style={{ minWidth: 'initial' }} />
+          <Tab value="6" label="Sports" style={{ minWidth: 'initial' }} />
+          <Tab value="7" label="Toys & Games" style={{ minWidth: 'initial' }} />
+          <Tab value="8" label="Jewelry" style={{ minWidth: 'initial' }} />
+          <Tab value="9" label="Groceries & food" style={{ minWidth: 'initial' }} />
+          <Tab value="10" label="Construction" style={{ minWidth: 'initial' }} />
         </Tabs>
         <TabPanel value="1">
-          {" "}
-          <ProductList />{" "}
+          <ProductList />
         </TabPanel>
-        <TabPanel value="2">programming in react</TabPanel>
-        <TabPanel value="3">jungle is the best</TabPanel>
+        <TabPanel value="2"><Electronics/></TabPanel>
+        <TabPanel value="3"><Clothing/></TabPanel>
         <TabPanel value="4">
-          {" "}
-          <House />{" "}
+          <HomeAppliances/>
         </TabPanel>
         <TabPanel value="5">
-          <BatteryChargingFullRounded />{" "}
+          <HealthAndBeauty/>
         </TabPanel>
         <TabPanel value="6">
-          <ShowerSharp />{" "}
+          <Sports/>
         </TabPanel>
         <TabPanel value="7">
-          hen sher <HdrEnhancedSelect />{" "}
+          <ToysAndGames/>
         </TabPanel>
         <TabPanel value="8">
-          hen sher <HdrEnhancedSelect />{" "}
+          <Jewelry/>
         </TabPanel>
         <TabPanel value="9">
-          hen sher <HdrEnhancedSelect />{" "}
+         <GroceriesAndFood/>
         </TabPanel>
         <TabPanel value="10">
-          <Construction />{" "}
+          <ConstructionMaterials/>
         </TabPanel>
         <TabPanel value="11">
-          <CatchingPokemon />{" "}
+          <CatchingPokemon />
         </TabPanel>
         <TabPanel value="12">
-          <CarCrash />{" "}
+          <Furnitures/>
         </TabPanel>
       </Box>
     </TabContext>

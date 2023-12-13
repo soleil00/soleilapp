@@ -5,20 +5,22 @@ import React from "react";
 import ProductList from "./components/ProductList";
 import MarketHeader from "./components/MarketHeader";
 import ProductCategories from "./components/ProductCategories";
+import MarketBottom from "./components/MarketBottom";
+// import CartContextProvider from "./cartContext";
+
 
 const MarkertPlace = () => {
   return (
-    <div>
+    
+
+    <div className="relative">
       <div className="m-4">
-        <Breadcrumbs separator={<NavigateNext />}>
-          <Link href="/">Home</Link>
-          <Link href="/market">Market</Link>
-        </Breadcrumbs>
         <MarketHeader />
-        {/* <ProductList /> */}
       </div>
       <ProductCategories />
     </div>
+
+    
   );
 };
 
