@@ -1,11 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useContext } from "react";
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   Avatar,
+  Badge,
   Divider,
   ListItem,
   ListItemAvatar,
@@ -19,8 +20,11 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { KeyboardArrowRight } from "@mui/icons-material";
+import { soleilContext } from "../cartContext";
 
 const ProfilePage = () => {
+  const { state } = useContext(soleilContext);
+
   return (
     <div className="min-h-screen bg-gray-500">
       <Paper className="bg-purple-300 relative h-[150px] text-center">
@@ -37,7 +41,15 @@ const ProfilePage = () => {
 
         <div className="absolute w-[80%] left-1/2 transform -bottom-5 -translate-x-1/2">
           <Paper className="flex justify-between items-center p-3">
-            <Link href="/market/orders">My Orders</Link>
+            <Link href="/market/orders">
+              <Badge
+                badgeContent={state.orders.length}
+                showZero
+                color="secondary"
+              >
+                My Orders
+              </Badge>
+            </Link>
             <Link href="/market/orders">My Shop</Link>
             <Link href="/market/orders">Orders</Link>
           </Paper>

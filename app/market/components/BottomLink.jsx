@@ -1,10 +1,10 @@
-import { Badge, BottomNavigationAction } from "@mui/material";
+import { Badge, BottomNavigationAction,Avatar } from "@mui/material";
 import Link from "next/link";
 import React, { useContext } from "react";
 import { soleilContext } from "../cartContext";
 
 const BottomLink = ({ nav }) => {
-  const { cart } = useContext(soleilContext);
+  const { state } = useContext(soleilContext);
 
   return (
     <Link href={nav.href}>
@@ -16,8 +16,12 @@ const BottomLink = ({ nav }) => {
               {nav.icon}
             </Badge>
           ) : nav.name === "Cart" ? (
-            <Badge badgeContent={cart.length} color="success">
+            <Badge badgeContent={state.cart.length} color="success">
               {nav.icon}
+            </Badge>
+          ) : nav.name === "Publish" ? (
+            <Badge badgeContent={"Post"} color="success">
+              <Avatar>{nav.icon}</Avatar>
             </Badge>
           ) : (
             nav.icon

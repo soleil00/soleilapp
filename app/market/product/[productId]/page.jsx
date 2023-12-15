@@ -29,21 +29,17 @@ import { soleilContext } from "../../cartContext";
 
 const ProductDetails = ({ params: { productId } }) => {
   const product = products.find(
-    (product) => product.id === parseInt(productId),
+    (product) => product.id === parseInt(productId)
   );
   const dummy = [product.image, "/shoes.jpeg", "/drone.jpeg", "/bag.jpeg"];
   const [show, setShow] = useState(product.image);
 
-  const { setCart, cart } = useContext(soleilContext);
+  const { addToCart, removeFromCart, state, singleCheckout } = useContext(
+    soleilContext
+  );
 
   const handleShow = (img) => {
     setShow(img.target.srcset.split(" ")[0]);
-  };
-
-  const handleAddToCart = () => {
-    setCart((state) =>
-      state.map((pro) => (pro.id !== product.id ? [...state, product] : state)),
-    );
   };
 
   return (
@@ -120,19 +116,17 @@ const ProductDetails = ({ params: { productId } }) => {
         and I think we should include some markdown inside here to make it good
       </p>
 
-      {cart.includes(product) ? (
+      {state.cart.includes(product) ? (
         <button
           className="bg-red-400 w-full py-2 mb-1 rounded-lg border-2 border-blue-500"
-          onClick={() =>
-            setCart((state) => state.filter((pro) => pro.id !== product.id))
-          }
+          onClick={() => removeFromCart(product.id)}
         >
           Remove From Cart <ShoppingCart />
         </button>
       ) : (
         <button
           className="bg-green-400 w-full py-2 mb-1 rounded-lg border-2 border-purple-500"
-          onClick={() => setCart((state) => [...state, product])}
+          onClick={() => addToCart(product)}
         >
           Add To Cart <ShoppingCart />
         </button>
@@ -140,7 +134,10 @@ const ProductDetails = ({ params: { productId } }) => {
 
       <p style={{ textAlign: "center" }}>or</p>
 
-      <button className="bg-yellow-400 w-full py-2 mt-1 rounded-lg border-2 border-red-400">
+      <button
+        onClick={() => singleCheckout(product)}
+        className="bg-yellow-400 w-full py-2 mt-1 rounded-lg border-2 border-red-400"
+      >
         Buy Now <CreditScore />
       </button>
     </div>

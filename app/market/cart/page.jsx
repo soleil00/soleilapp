@@ -6,24 +6,27 @@ import { Button, Divider, Paper, Stack, Typography } from "@mui/material";
 import CartCard from "./CartCard";
 import { CreditScoreSharp } from "@mui/icons-material";
 import CartHeader from "./CartHeader";
+import CheckoutConfirmation from "../CheckoutConfirmation";
 
 const MyCart = () => {
-  const { cart, setCart } = useContext(soleilContext);
+  const { state, checkout } = useContext(soleilContext);
   const [total, setTotal] = useState(0);
+  // const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    setTotal(cart.reduce((acc, curr) => acc + Number(curr.price), 0));
-  }, [cart]);
+    setTotal(state.cart.reduce((acc, curr) => acc + Number(curr.price), 0));
+  }, [state.cart]);
 
   return (
     <div className="my-[10px] mx-[20px] relative">
       <CartHeader />
       <Stack spacing={1} marginTop={"12px"}>
-        {cart.map((product) => (
+        {state.cart.map((product) => (
           <CartCard key={product.id} product={product} />
         ))}
       </Stack>
-      {cart.length > 0 ? (
+      {state.cart.length > 0 ? (
         <Paper sx={{ padding: "20px", marginTop: "20px" }}>
           <Stack
             direction={"row"}
@@ -62,6 +65,7 @@ const MyCart = () => {
           </Stack>
           <Button
             variant="outlined"
+            onClick={() => setOpen(true)}
             endIcon={<CreditScoreSharp />}
             sx={{ marginTop: "10px" }}
             color="success"
@@ -78,6 +82,7 @@ const MyCart = () => {
           </Typography>
         </>
       )}
+      <CheckoutConfirmation open={open} setOpen={setOpen} />
     </div>
   );
 };

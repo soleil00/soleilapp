@@ -6,14 +6,34 @@ import {
   ShoppingCart,
   VerifiedUser,
 } from "@mui/icons-material";
-import { Button, Typography, Paper, Stack } from "@mui/material";
+import {
+  Button,
+  Typography,
+  Paper,
+  Stack,
+  Alert,
+  Snackbar,
+  AlertTitle,
+} from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext } from "react";
+import React, { useContext, forwardRef, useState } from "react";
 import { soleilContext } from "../cartContext";
 
+const SnackbarAlert = forwardRef((props, ref) => {
+  return <Alert elevation={5} ref={ref} {...props} />;
+});
+
 const ProductCard = ({ product }) => {
-  const { cart, setCart } = useContext(soleilContext);
+  const { state, addToCart, removeFromCart } = useContext(soleilContext);
+
+  const [exist, setExist] = useState(false);
+
+  const handleAddToCart = () => {
+    if (state.orders.includes(product)) {
+      setExist(true);
+    } else addToCart(product);
+  };
 
   return (
     <Paper sx={{ borderRadius: "16px" }} className="relative pb-1">
@@ -39,13 +59,11 @@ const ProductCard = ({ product }) => {
         <Typography fontSize={"small"} sx={{ color: "red" }}>
           {product?.price} Pi
         </Typography>
-        {cart.includes(product) ? (
+        {state.cart.includes(product) ? (
           <Button
             size="small"
             variant="outlined"
-            onClick={() =>
-              setCart((state) => state.filter((pro) => pro.id !== product.id))
-            }
+            onClick={() => removeFromCart(product.id)}
             color="warning"
             sx={{ fontSize: "10px", borderRadius: "8px" }}
             endIcon={<ShoppingCart />}
@@ -55,7 +73,7 @@ const ProductCard = ({ product }) => {
         ) : (
           <Button
             size="small"
-            onClick={() => setCart((state) => [...state, product])}
+            onClick={handleAddToCart}
             variant="outlined"
             color="success"
             sx={{ fontSize: "10px", borderRadius: "8px" }}
@@ -72,6 +90,22 @@ const ProductCard = ({ product }) => {
       >
         {product?.stock} in Stock
       </Typography>
+
+      <Snackbar
+        autoHideDuration={4000}
+        open={exist}
+        onClose={() => setExist(false)}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+      >
+        <SnackbarAlert severity="error" onClose={() => setExist(false)}>
+          <AlertTitle>Product not added to Your Cart</AlertTitle>
+          This product already exist in your orders and seller has not marked it
+          as approved
+        </SnackbarAlert>
+      </Snackbar>
     </Paper>
   );
 };
